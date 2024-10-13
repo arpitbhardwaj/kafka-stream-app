@@ -11,7 +11,7 @@ import org.apache.kafka.streams.kstream.KTable;
 import java.util.Arrays;
 import java.util.Properties;
 
-public class Main {
+public class WordCountApp {
     public static void main(String[] args) {
         Properties config = new Properties();
         config.put(StreamsConfig.APPLICATION_ID_CONFIG, "word-count-app");
@@ -21,10 +21,11 @@ public class Main {
         config.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
         StreamsBuilder builder = new StreamsBuilder();
-        //Stream from kafka
+
         KStream<String, String> wordCountInput = builder.stream("word-count-input");
-        //mapValues to lowercase
-        KTable<String, Long> wordCounts = wordCountInput.mapValues(value -> value.toLowerCase())
+
+        KTable<String, Long> wordCounts = wordCountInput
+                .mapValues(value -> value.toLowerCase())
                 .flatMapValues(value -> Arrays.asList(value.split(" ")))
                 .selectKey((key, value) -> value)
                 .groupByKey()
