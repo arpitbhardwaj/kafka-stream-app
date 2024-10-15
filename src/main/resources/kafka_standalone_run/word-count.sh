@@ -28,4 +28,4 @@ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic word-count-in
 mvn clean package
 
 # run your fat jar
-java -jar <your jar here>.jar
+java -jar word-count-app.jar
