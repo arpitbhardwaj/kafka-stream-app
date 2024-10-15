@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: word-count-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: word-count-app
+  template:
+    metadata:
+      labels:
+        app: word-count-app
+    spec:
+      containers:
+        - name: word-count-app
+          image: arpitb/word-count-app:latest
+          env:
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "ab-kafka-cluster-kafka-bootstrap:9092"
+            - name: KAFKA_APPLICATION_ID
+              value: "word-count-app"
+            - name: INPUT_TOPIC
+              value: "word-count-input"
+            - name: OUTPUT_TOPIC
+              value: "word-count-output"
