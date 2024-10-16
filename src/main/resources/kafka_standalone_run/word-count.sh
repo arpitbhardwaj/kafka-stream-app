@@ -9,7 +9,7 @@ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-fac
 # list all topics that we have in Kafka (so we can observe the internal topics)
 bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
 
-# launch a Kafka consumer
+# launch Kafka consumer
 bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
     --topic word-count-output \
     --from-beginning \
@@ -21,8 +21,13 @@ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
 
 # launch the streams application from intellij
 
-# then produce data to it
+# launch Kafka producer
 bin/kafka-console-producer.sh --broker-list localhost:9092 --topic word-count-input
+
+# Produce data in the producer terminal
+hello kafka streams
+kafka streams is working
+arpit is working on kafka streams
 
 # package your application as a fat jar
 mvn clean package
