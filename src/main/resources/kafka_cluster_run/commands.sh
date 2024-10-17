@@ -24,7 +24,7 @@ minikube dashboard
 minikube ip
 
 #Apply the kafka cluster configuration to your k8s cluster (Add minikube ip in advertisedHost)
-kubectl apply -f /Users/arbhard2/IdeaProjects/personal/kafka-stream-app/src/main/resources/kafka_cluster_run/simple-kafka-cluster-with-nodeport.yaml -n kafka
+kubectl apply -f /Users/arbhard2/IdeaProjects/personal/kafka-stream-app/src/main/resources/kafka_cluster_run/advanced-kafka-cluster.yaml -n kafka
 #if only zookeeper pods comes then change the kafka version in yaml and reapply the yaml
 
 
