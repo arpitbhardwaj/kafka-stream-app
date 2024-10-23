@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ab-kafka-cluster-external
+  labels:
+    strimzi.io/cluster: ab-kafka-cluster
+spec:
+  type: NodePort
+  ports:
+    - port: 9094
+      targetPort: 9092
+      nodePort: 30092
+  selector:
+    strimzi.io/name: ab-kafka-cluster-kafka
+    strimzi.io/broker-id: "0"
